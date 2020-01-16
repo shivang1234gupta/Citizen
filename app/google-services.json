@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "513752253402",
+    "firebase_url": "https://policebuerau.firebaseio.com",
+    "project_id": "policebuerau",
+    "storage_bucket": "policebuerau.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513752253402:android:e8026fb1787b3cd7ccb6e3",
+        "android_client_info": {
+          "package_name": "com.example.adddata"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513752253402-pa13tm17i2u1ao86k45i3e98dedq4hiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzOXM5nRwxV8h9LmWsRtmt-_VrAoFwZHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513752253402-pa13tm17i2u1ao86k45i3e98dedq4hiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513752253402:android:ce51e0453820d405ccb6e3",
+        "android_client_info": {
+          "package_name": "com.example.policebureauapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513752253402-pa13tm17i2u1ao86k45i3e98dedq4hiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzOXM5nRwxV8h9LmWsRtmt-_VrAoFwZHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513752253402-pa13tm17i2u1ao86k45i3e98dedq4hiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513752253402:android:a5a8ab6a9ebdc2cfccb6e3",
+        "android_client_info": {
+          "package_name": "com.myapp.android.citizen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513752253402-90h5mlhmklab4fegg73s195afb879ilf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myapp.android.citizen",
+            "certificate_hash": "cccf810a16199003d337159393fc686b35d8d713"
+          }
+        },
+        {
+          "client_id": "513752253402-pa13tm17i2u1ao86k45i3e98dedq4hiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzOXM5nRwxV8h9LmWsRtmt-_VrAoFwZHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513752253402-pa13tm17i2u1ao86k45i3e98dedq4hiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
