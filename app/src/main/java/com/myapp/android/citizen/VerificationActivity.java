@@ -55,7 +55,11 @@ public class VerificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 verifymail();
+                Toast.makeText(VerificationActivity.this,"Please Login again",Toast.LENGTH_LONG).show();
                 FirebaseAuth.getInstance().signOut();
+                Intent intent=new Intent(VerificationActivity.this,LogInActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
         later.setOnClickListener(new View.OnClickListener() {
