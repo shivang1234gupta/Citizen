@@ -4,9 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.app.DatePickerDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -85,11 +89,7 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*boolean x=verifycode();
-                if (x)
-                    Toast.makeText(ProfileActivity.this,"Mobile number verified",Toast.LENGTH_SHORT);
-                else
-                    Toast.makeText(ProfileActivity.this,"Mobile number not verified",Toast.LENGTH_SHORT);*/
+                verifycode();
                 saveUserInfo();
             }
         });
@@ -229,4 +229,25 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         String sowdate= sdf.format(calendar.getTime());
         dob.setText(sowdate);
     }
+    @Override
+    public void onResume() {
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("otp"));
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+    }
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equalsIgnoreCase("otp")) {
+                final String message = intent.getStringExtra("message");
+                otp.setText(message);
+                //Do whatever you want with the code here
+            }
+        }
+    };
 }

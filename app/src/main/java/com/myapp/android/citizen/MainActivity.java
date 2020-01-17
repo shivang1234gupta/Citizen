@@ -135,8 +135,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.logout)
+        {
             logout();
-        return true;
+            return true;
+        }
+        else if(item.getItemId()==R.id.nearpolice)
+        {
+            /*String uri = "geo:"+ x + "," + y +"&q=child hospitals";
+            startActivity(new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri)));
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("http://maps.google.com/maps?&saddr="
+                            + x
+                            + ","
+                            + y
+                            + "&daddr=nearby child hospitals"
+
+                    ));
+            startActivity(intent);*/
+            return true;
+        }
+        else
+            return false;
     }
     private void logout(){
         FirebaseAuth.getInstance().signOut();
