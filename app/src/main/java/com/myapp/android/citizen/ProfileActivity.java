@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -36,6 +38,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -66,9 +69,6 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         imageView=findViewById(R.id.profilephoto);
         name=findViewById(R.id.name);
         dob=findViewById(R.id.dob);
-        phonenumber=findViewById(R.id.phone);
-        email_verify=findViewById(R.id.verifyemail);
-        otp=findViewById(R.id.otp);
         submit=findViewById(R.id.Continue);
         mauth=FirebaseAuth.getInstance();
         dob.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +79,6 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
             }
         });
         mstoragereference=FirebaseStorage.getInstance().getReference();
-        verifymail();
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,30 +88,10 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verifycode();
                 saveUserInfo();
             }
         });
 
-
-    }
-    private void verifymail(){
-        final FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-        if(!user.isEmailVerified()){
-            email_verify.setVisibility(View.VISIBLE);
-            email_verify.setText("Email not verified: Tap to verify");
-            email_verify.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(ProfileActivity.this,"Verification Id send",Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-            });
-        }
 
     }
     @Override
@@ -131,30 +110,6 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    public boolean verifycode(){
-        if(phonenumber.getText()!=null) {
-            String mobile = phonenumber.getText().toString();
-            if (mobile.length() < 10) {
-                phonenumber.setError("10 digit mobile number is required");
-                phonenumber.requestFocus();
-            } else {
-                otp.setVisibility(View.VISIBLE);
-                int otp1 = (int) (Math.random() * 1000000);
-                new QueryUtils().sendverificationcode(mobile, String.valueOf(otp1));
-                  //  verifycode();
-                if (otp.getText() == null) {
-                    otp.setError("otp is necessary");
-                    otp.requestFocus();
-                } else {
-                    String code = otp.getText().toString();
-                    if (code.equals(otp1))
-                        return true;
-
-                }
-            }
-        }
-        return false;
     }
     public void saveUserInfo()
     {
@@ -183,7 +138,7 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()) {
                         Toast.makeText(ProfileActivity.this, "Profile updated", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(ProfileActivity.this,MainActivity.class);
+                        Intent intent=new Intent(ProfileActivity.this,VerificationActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
@@ -198,23 +153,30 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         startActivityForResult(Intent.createChooser(intent,"Select Image"),CHOSE_IMAGE);
     }
     private void uploadImagetoFirebase() {
+        final ProgressDialog progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Uploading...");
+        progressDialog.show();
         final StorageReference storageReference = mstoragereference.child("profilepics" + System.currentTimeMillis() + ".jpg");
         if (uriImage != null) {
             UploadTask uploadTask = storageReference.putFile(uriImage);
-            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if (!task.isSuccessful())
-                        throw task.getException();
-                    return storageReference.getDownloadUrl();
-                }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()) {
-                        downloadUri = task.getResult();
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Task<Uri> uri=taskSnapshot.getStorage().getDownloadUrl();
+                    //Uri url=null;
+                    while (!uri.isComplete());
+                       Uri url=uri.getResult();
 
-                    }
+                    downloadUri=url;
+                    Toast.makeText(getApplicationContext(),"File uploaded",Toast.LENGTH_SHORT);
+                    progressDialog.dismiss();
+
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                    double progress=(100.0*taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+                    progressDialog.setMessage("Uploaded "+(int)progress+"%");
                 }
             });
         }
@@ -229,25 +191,4 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         String sowdate= sdf.format(calendar.getTime());
         dob.setText(sowdate);
     }
-    @Override
-    public void onResume() {
-        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("otp"));
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
-    }
-    private BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equalsIgnoreCase("otp")) {
-                final String message = intent.getStringExtra("message");
-                otp.setText(message);
-                //Do whatever you want with the code here
-            }
-        }
-    };
 }

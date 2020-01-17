@@ -63,9 +63,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list_items=new ArrayList<>();
         list_items.add(new List_item("FIR"));
+        list_items.add(new List_item("Search Fir"));
         list_items.add(new List_item("Complains"));
         list_items.add(new List_item("Verification"));
-        list_items.add(new List_item("Permission"));
+        list_items.add(new List_item("Permission for protest"));
+        list_items.add(new List_item("Permission For Procession"));
+        list_items.add(new List_item("Permission For Event"));
+        list_items.add(new List_item("Permissions For Film Shooting"));
 
         adapter=new MainActivityAdapter(list_items);
         recyclerView.setAdapter(adapter);
@@ -141,17 +145,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(item.getItemId()==R.id.nearpolice)
         {
-            /*String uri = "geo:"+ x + "," + y +"&q=child hospitals";
-            startActivity(new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri)));
-            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                    Uri.parse("http://maps.google.com/maps?&saddr="
-                            + x
-                            + ","
-                            + y
-                            + "&daddr=nearby child hospitals"
-
-                    ));
-            startActivity(intent);*/
+            Uri gmmIntentUri = Uri.parse("geo:0,0?q=Nearby Police Station");
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
             return true;
         }
         else

@@ -19,6 +19,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:hint="Password"
+        android:inputType="numberPassword"
         android:id="@+id/PasswordSignin"/>
     <Button
         android:layout_width="wrap_content"

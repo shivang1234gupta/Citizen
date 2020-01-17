@@ -40,35 +40,10 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:hint="Enter date of birth"
+        android:focusable="false"
         android:id="@+id/dob"
         android:inputType="date"
         />
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:hint="Verify Phone (Optional)"
-        android:id="@+id/phone"
-        android:inputType="phone"/>
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:hint="Enter otp"
-        android:id="@+id/otp"
-        android:inputType="numberPassword"
-        android:visibility="gone"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Verify Email"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textSize="24sp"
-        android:id="@+id/verifyemail"
-        android:visibility="gone"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

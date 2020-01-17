@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">Citizen</string>
+    <string-array name="gender_spinner_items">
+        <item>--Select--</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="status_spinner_items">
+        <item>--Select--</item>
+        <item>Solved</item>
+        <item>Unsolved</item>
+    </string-array>
+
+    <string-array name="permission_spinner_items">
+        <item>--Select--</item>
+        <item>Type 1</item>
+        <item>Type 2</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="permission_status_spinner_items">
+        <item>--Select--</item>
+        <item>Granted</item>
+        <item>Pending</item>
+    </string-array>
+
+    <string-array name="complaint_type_spinner_items">
+        <item>----Select----</item>
+        <item>Report Misbehaviour</item>
+        <item>Noise Complaint</item>
+        <item>Damage to property</item>
+        <item>mass violence</item>
+        <item>Dispute of property</item>
+        <item>Others</item>
+    </string-array>
+
 </resources>
