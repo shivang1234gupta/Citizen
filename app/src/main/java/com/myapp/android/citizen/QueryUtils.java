@@ -32,6 +32,7 @@ public class QueryUtils
         String message="Your%20One%20time%20password%20is:%20"+otp;
         headline1+=message;
         headline+=headline1+headline2;
+        Log.e("URL: ",headline);
         while (!extractNews())
             extractNews();
     }

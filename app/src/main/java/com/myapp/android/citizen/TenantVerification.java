@@ -45,6 +45,7 @@ public class TenantVerification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tenant_verification);
         initialize();
+
     }
 
     public void Submit(View view) {

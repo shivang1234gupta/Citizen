@@ -146,6 +146,9 @@ public class PermissionForm extends AppCompatActivity implements SelectPoliceSta
                 String permissionId=reference.push().getKey();
                 reference.child(permissionId).setValue(currentPermission);
                 ShowId(permissionId);
+                DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Citizen");
+                databaseReference.child("PERMISSION").child(permissionId).setValue(currentPermission);
+
             }
         });
         builder.setNegativeButton("Cancel",null);

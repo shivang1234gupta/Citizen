@@ -18,20 +18,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VerificationActivity"></activity>
-        <activity android:name=".FIRActivity" />
+        <activity android:name=".ShowComplaintActivity"></activity>
+        <activity android:name=".ShowFullFIRActivity" />
+        <activity android:name=".ShowFIR" />
+        <activity android:name=".VerificationActivity" />
         <activity android:name=".PageFragment" />
         <activity android:name=".PageViewActivity" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".TenantVerification"/>
-        <activity android:name=".CharacterCertificate"/>
-        <activity android:name=".PermissionForm"/>
-        <activity android:name=".FirRegistration"/>
-        <activity android:name=".EmployeeVerification"/>
-        <activity android:name=".CompRegister"/>
+        <activity android:name=".TenantVerification" />
+        <activity android:name=".CharacterCertificate" />
+        <activity android:name=".PermissionForm" />
+        <activity android:name=".FirRegistration" />
+        <activity android:name=".EmployeeVerification" />
+        <activity android:name=".CompRegister" />
 
         <receiver android:name=".IncomingSms">
             <intent-filter>

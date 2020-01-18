@@ -33,6 +33,13 @@
         android:layout_gravity="center"
         android:text="Submit"
         android:id="@+id/submitVerify"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:layout_gravity="center"
+        android:id="@+id/verifycode"
+        android:visibility="gone"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

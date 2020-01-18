@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -143,6 +144,10 @@ public class CompRegister extends AppCompatActivity implements SelectPoliceStati
                 String compId=databaseReference.push().getKey();
                 databaseReference=databaseReference.child(compId);
                 databaseReference.setValue(complaint);
+                DatabaseReference databaseReference1;
+                databaseReference1=FirebaseDatabase.getInstance().getReference("Citizen").
+                        child(FirebaseAuth.getInstance().getUid()).child("COMPLAINTS");
+                databaseReference1.child(compId).setValue(new UserComplain(compId,pid));
                 setDialogBoxToShoComplaintId(compId);
             }
         });

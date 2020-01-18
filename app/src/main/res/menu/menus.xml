@@ -4,6 +4,10 @@
         android:title="Nearby PoliceStation"
         android:id="@+id/nearpolice"/>
     <item
+        android:title="Verify Details"
+        android:id="@+id/verify"
+        />
+    <item
         android:title="Log Out"
         android:id="@+id/logout">
     </item>

@@ -40,6 +40,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         if(item.getItemId()==R.id.logout)
         {
             logout();
@@ -151,9 +152,54 @@ public class MainActivity extends AppCompatActivity {
             startActivity(mapIntent);
             return true;
         }
+        else if (item.getItemId()==R.id.verify)
+        {
+            Intent intent=new Intent(MainActivity.this, VerificationActivity.class);////errror
+            startActivity(intent);
+            return true;
+        }
         else
             return false;
     }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        final MenuItem item = menu.getItem(1);
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Citizen")
+                .child(FirebaseAuth.getInstance().getUid());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String status="false";
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snapshot:dataSnapshot.getChildren())
+                    {
+                        Log.e("Snapshot",snapshot.toString());
+                        if (snapshot.getKey().equals("mobilestatus"))
+                            status=snapshot.getValue().toString();
+                    }
+                    if (status.equals("true")&& FirebaseAuth.getInstance().getCurrentUser().isEmailVerified())
+                    {
+
+                        item.setEnabled(false);
+                    }
+                    else{
+                        Intent intent=new Intent(MainActivity.this,VerificationActivity.class);
+                        startActivity(intent);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return true;
+
+    }
+
     private void logout(){
         FirebaseAuth.getInstance().signOut();
         finish();

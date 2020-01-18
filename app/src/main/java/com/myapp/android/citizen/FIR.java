@@ -1,6 +1,8 @@
 package com.myapp.android.citizen;
 
-public class FIR {
+import java.io.Serializable;
+
+public class FIR implements Serializable {
     private String ApplicantName, Dob, ApplicantAddress, ApplicantPermanentAddress, ApplicantGender, status, ApplicantMobileNo,
             IncindentDate, FirDetails;
 
