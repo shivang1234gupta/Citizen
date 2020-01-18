@@ -87,6 +87,7 @@ public class VerificationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 databaseReference.child("mobilestatus").setValue(false);
                 Intent intent=new Intent(VerificationActivity.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
