@@ -33,8 +33,10 @@ import androidx.recyclerview.widget.RecyclerView;
         @Override
         public void onBindViewHolder(@NonNull FirViewHolder holder, final int position) {
             //holder.firIdTextView.setText("FIR ID : "+firIdArrayList.get(position));
-            holder.statusTextView.setText("STATUS : "+firarrayList.get(position).getStatus()+" "+
-                    firarrayList.get(position).getApplicantName());
+            holder.statusTextView.setText("STATUS : "+firarrayList.get(position).getStatus());
+            holder.applicant.setText("Name of Applicant: "+firarrayList.get(position).getApplicantName());
+            holder.dateofregisteration.setText("Registeration Date: "+firarrayList.get(position).getIncindentDate());
+            holder.dateofregisteration.setText("Mobile Number: "+firarrayList.get(position).getApplicantMobileNo());
             holder.root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -53,7 +55,7 @@ import androidx.recyclerview.widget.RecyclerView;
     class FirViewHolder extends RecyclerView.ViewHolder {
 
         //TextView firIdTextView;
-        TextView statusTextView;
+        TextView statusTextView,applicant,dateofevent,dateofregisteration;
         View root;
 
 
@@ -63,5 +65,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
             //firIdTextView = (TextView) itemView.findViewById(R.id.firIdTextView);
             statusTextView = (TextView) itemView.findViewById(R.id.FirStatusTextView);
+            applicant=itemView.findViewById(R.id.NameOfapplicant);
+            dateofevent=itemView.findViewById(R.id.EventDate);
+            dateofregisteration=itemView.findViewById(R.id.DateOfRegisteration);
+
         }
     }

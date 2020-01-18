@@ -49,8 +49,6 @@ public class CharacterCertificate extends AppCompatActivity {
         applicantMobile=findViewById(R.id.verForm_et3);
         applicantAdress=findViewById(R.id.verForm_et4);
         enterDoc1=findViewById(R.id.verForm_enterDoc1);
-        enterDoc2=findViewById(R.id.verForm_enterDoc2);
-        enterDoc3=findViewById(R.id.verForm_enterDoc3);
         upload1=findViewById(R.id.verForm_Upload1);
         upload2=findViewById(R.id.verForm_Upload2);
         upload3=findViewById(R.id.verForm_Upload3);

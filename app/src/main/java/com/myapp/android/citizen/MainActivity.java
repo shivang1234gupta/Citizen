@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         list_items.add(new List_item("Permission For Event"));
         list_items.add(new List_item("Permissions For Film Shooting"));
 
-        adapter=new MainActivityAdapter(list_items);
+        adapter=new mainAdapter();
         recyclerView.setAdapter(adapter);
 
 //        textView=findViewById(R.id.username);

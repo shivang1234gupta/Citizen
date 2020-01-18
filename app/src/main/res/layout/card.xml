@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="150dp"
+    android:background="#999999"
+    android:layout_marginTop="20dp"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/mobh"
+        android:id="@+id/mainRow_image"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/mainRow_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="REGISTER FIR "
+            android:layout_marginLeft="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:text="You can register an First Incedence Report for any incedence"
+            android:id="@+id/mainRow_subtitle"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

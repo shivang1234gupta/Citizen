@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class TenantVerification extends AppCompatActivity {
+public class TenantVerification extends AppCompatActivity implements SelectPoliceStation.Station_Getter{
     TextInputEditText applicantName;
     TextInputEditText tenantName;
     TextInputEditText tenantDOB;
@@ -23,6 +23,7 @@ public class TenantVerification extends AppCompatActivity {
     Button upButton2;
     Button upButton3;
     Button submit;
+    String  pid;
 
 
     private void initialize(){
@@ -32,20 +33,21 @@ public class TenantVerification extends AppCompatActivity {
         tenantMobile=findViewById(R.id.verForm_et4);
         applicantmobile =findViewById(R.id.verForm_et5);
         applicantPerAdd=findViewById(R.id.verForm_et6);
-        Upload1=findViewById(R.id.verForm_Upload1);
-        Upload2=findViewById(R.id.verForm_Upload2);
-        Upload3=findViewById(R.id.verForm_Upload3);
-        upButton1=findViewById(R.id.verForm_enterDoc1);
-        upButton2=findViewById(R.id.verForm_enterDoc2);
-        upButton3=findViewById(R.id.verForm_enterDoc3);
+        Upload1=findViewById(R.id.verForm_enterDoc1);
+        Upload2=findViewById(R.id.verForm_enterDoc2);
+        Upload3=findViewById(R.id.verForm_enterDoc3);
+        upButton1=findViewById(R.id.verForm_Upload1);
+        upButton2=findViewById(R.id.verForm_Upload2);
+        upButton3=findViewById(R.id.verForm_Upload3);
         submit=findViewById(R.id.verForm_submit);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tenant_verification);
+        SelectPoliceStation station=new SelectPoliceStation();
+        station.show(getSupportFragmentManager(),"Tag");
         initialize();
-
     }
 
     public void Submit(View view) {
@@ -74,5 +76,15 @@ public class TenantVerification extends AppCompatActivity {
         else{
 
         }
+    }
+
+    @Override
+    public void getStation(String policeStationId) {
+        pid=policeStationId;
+    }
+
+    @Override
+    public void OnCanceled() {
+        onBackPressed();
     }
 }

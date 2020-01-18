@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class EmployeeVerification extends AppCompatActivity {
+public class EmployeeVerification extends AppCompatActivity implements SelectPoliceStation.Station_Getter{
     TextInputEditText employeeName;
     TextInputEditText employerName;
     TextInputEditText employerMobile;
@@ -26,6 +26,7 @@ public class EmployeeVerification extends AppCompatActivity {
     Button Upload2;
     Button Upload3;
     Button Submit;
+    String pid;
 
 
 
@@ -51,6 +52,8 @@ public class EmployeeVerification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.employee_verification);
+        SelectPoliceStation station=new SelectPoliceStation();
+        station.show(getSupportFragmentManager(),"tag");
         initialize();
 
     }
@@ -86,5 +89,15 @@ public class EmployeeVerification extends AppCompatActivity {
         else {
 
         }
+    }
+
+    @Override
+    public void getStation(String policeStationId) {
+        pid=policeStationId;
+    }
+
+    @Override
+    public void OnCanceled() {
+        onBackPressed();
     }
 }

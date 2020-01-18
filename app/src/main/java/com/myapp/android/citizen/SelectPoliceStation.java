@@ -89,6 +89,8 @@ public class SelectPoliceStation extends DialogFragment {
                     }
                     if(al==null||spinner1==null)
                         return;
+                    if(getContext()==null||al==null||spinner1==null)
+                        return;
                     ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,al);
                     spinner1.setEnabled(true);
                     spinner1.setClickable(true);
@@ -127,6 +129,8 @@ public class SelectPoliceStation extends DialogFragment {
                             }
                             Log.i("My Districts",al2.toString());
                             if(al2==null||spinner2==null)
+                                return;
+                            if(getContext()==null||al2==null||spinner2==null)
                                 return;
                             ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,al2);
                             spinner2.setEnabled(true);
@@ -179,6 +183,8 @@ public class SelectPoliceStation extends DialogFragment {
                                 al3.add(add_station);
                             }
                             if(al3==null||spinner3==null)
+                                return;
+                            if(getContext()==null||al3==null||spinner3==null)
                                 return;
                             ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,al3);
                             spinner3.setEnabled(true);

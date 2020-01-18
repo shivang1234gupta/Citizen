@@ -1,5 +1,4 @@
 package com.myapp.android.citizen;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -26,14 +25,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class FirRegistration extends AppCompatActivity implements SelectPoliceStation.Station_Getter {
@@ -59,10 +53,11 @@ public class FirRegistration extends AppCompatActivity implements SelectPoliceSt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fir_registration);
-        //getFIR();
         SelectPoliceStation station=new SelectPoliceStation();
-
         station.show(getSupportFragmentManager(),"Tag");
+        setTitle("Fir Form");
+
+
         initialize();
         applicantDobEditText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,10 +212,6 @@ public class FirRegistration extends AppCompatActivity implements SelectPoliceSt
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 databaseReference.child(FirId).setValue(currFir);
-                DatabaseReference databaseReference1;
-                databaseReference1=FirebaseDatabase.getInstance().getReference("Citizen").
-                        child(FirebaseAuth.getInstance().getUid()).child("FIR");
-                databaseReference1.child(FirId).setValue(new UserFIR(FirId,username));
                 setDialogBoxToShowFirId(FirId);
             }
         });

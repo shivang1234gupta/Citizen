@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 
 /**
@@ -19,6 +22,7 @@ public class PageFragment extends Fragment {
 
     private TextView textView;
     private Button button;
+    private ImageView imageView;
     public PageFragment() {
         // Required empty public constructor
     }
@@ -38,9 +42,33 @@ public class PageFragment extends Fragment {
         textView=view.findViewById(R.id.pageno);
         String s=getArguments().getString("message");
         textView.setText(s);
+        imageView=view.findViewById(R.id.page_image);
         int x=getArguments().getInt("position");
+        if (x==1){
+            Glide.with(this)
+                    .load(R.drawable.group469)
+                    .into(imageView);
+        }
+        if (x==2){
+            Glide.with(this)
+                    .load(R.drawable.group471)
+                    .override(500,500)
+                    .into(imageView);
+        }
         if(x==3)
         {
+            Glide.with(this)
+                    .load(R.drawable.group472)
+                    .override(500,500)
+                    .into(imageView);
+            //imageView.setImageResource(R.drawable.group472);
+        }
+        if (x==4)
+        {
+            Glide.with(this)
+                    .load(R.drawable.group473)
+                    .override(500,500)
+                    .into(imageView);
             button=view.findViewById(R.id.swap);
             button.setVisibility(View.VISIBLE);
             button.setOnClickListener(new View.OnClickListener() {

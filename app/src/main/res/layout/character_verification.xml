@@ -134,44 +134,8 @@
                             android:text="UPLOAD"
                             android:layout_marginRight="10dp"/>
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.google.android.material.textfield.TextInputEditText
-                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:layout_marginRight="10dp"
-                            android:id="@+id/verForm_enterDoc2"/>
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:id="@+id/verForm_Upload2"
-                            android:text="UPLOAD"
-                            android:layout_marginRight="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:layout_marginRight="10dp"
-                            android:id="@+id/verForm_enterDoc3"/>
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:id="@+id/verForm_Upload3"
-                            android:text="UPLOAD"
-                            android:layout_marginRight="10dp"/>
-                    </LinearLayout>
                 </LinearLayout>
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
