@@ -144,13 +144,36 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.mainViewHolder
                 }
             });
 
+        }else if(position==10){
+            holder.title.setText("S.O.S.");
+            holder.subTitle.setText("one way portal for all possible s.o.s. numbers");
+            holder.imageView.setImageResource(R.drawable.sos);
+            holder.root.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Intent intent=new Intent(v.getContext(),Sos_Activity.class);
+                    //v.getContext().startActivity(intent);
+                }
+            });
+        }else if(position==11){
+            holder.imageView.setImageResource(R.drawable.missing_person);
+            holder.title.setText("Missing Persons");
+            holder.subTitle.setText("Get a list of missing persons in your locality");
+        }else if(position==12){
+            holder.imageView.setImageResource(R.drawable.arres);
+            holder.title.setText("Recent Arrests");
+            holder.subTitle.setText("Know about recent arrests in your area");
+        }else if(position==13){
+            holder.subTitle.setText("Know  and report about wanted criminals");
+            holder.title.setText("Wanted Criminal");
+            holder.imageView.setImageResource(R.drawable.rewrd_crim);
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 14;
     }
 
     class mainViewHolder extends RecyclerView.ViewHolder{
