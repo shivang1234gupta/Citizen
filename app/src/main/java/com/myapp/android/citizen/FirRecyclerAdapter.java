@@ -40,7 +40,7 @@ import androidx.recyclerview.widget.RecyclerView;
             holder.root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent=new Intent(view.getContext(), ShowFullFIRActivity.class);
+                    Intent intent=new Intent(view.getContext(), FirDetailActivity.class);
                     intent.putExtra("FIR",firarrayList.get(position));
                     view.getContext().startActivity(intent);////errror
                 }

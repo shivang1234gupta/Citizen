@@ -38,7 +38,7 @@ public class ComplaintRecyclerAdapter extends RecyclerView.Adapter<ComplaintView
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(view.getContext(), ShowFullFIRActivity.class);
+                Intent intent=new Intent(view.getContext(), FirDetailActivity.class);
                 intent.putExtra("COMPLAINT", (Serializable) firarrayList.get(position));
                 view.getContext().startActivity(intent);////errror
             }

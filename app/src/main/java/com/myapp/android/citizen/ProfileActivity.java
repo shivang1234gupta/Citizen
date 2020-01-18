@@ -127,6 +127,7 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
             dob.requestFocus();
             return;
         }
+        //dob.getText()
         FirebaseUser mfirebaseUser=mauth.getCurrentUser();
         if (mfirebaseUser!=null&&downloadUri!=null){
             UserProfileChangeRequest profile=new UserProfileChangeRequest.Builder()

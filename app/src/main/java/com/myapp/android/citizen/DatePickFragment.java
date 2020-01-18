@@ -22,7 +22,7 @@ public class DatePickFragment extends DialogFragment
         DatePickerDialog datePickerDialog= new DatePickerDialog(getActivity(),
                 (DatePickerDialog.OnDateSetListener) getActivity(),
                 year,month,day);
-        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
         return datePickerDialog;
     }
 }

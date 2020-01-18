@@ -20,7 +20,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ShowPermission"></activity>
         <activity android:name=".ShowComplaintActivity" />
-        <activity android:name=".ShowFullFIRActivity" />
         <activity android:name=".ShowFIR" />
         <activity android:name=".VerificationActivity" />
         <activity android:name=".PageFragment" />
@@ -33,6 +32,8 @@
         <activity android:name=".CharacterCertificate" />
         <activity android:name=".PermissionForm" />
         <activity android:name=".FirRegistration" />
+        <activity android:name=".FirDetailActivity"/>
+
         <activity android:name=".EmployeeVerification" />
         <activity android:name=".CompRegister" />
 
