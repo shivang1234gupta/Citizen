@@ -149,6 +149,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
                         }
 
                         @Override
+
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }

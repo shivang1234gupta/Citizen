@@ -25,7 +25,8 @@ import androidx.recyclerview.widget.RecyclerView;
         @NonNull
         @Override
         public FirViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.fir_recycler_view_layout,parent,false);
+            View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.fir_recycler_view_layout,parent,
+                    false);
             return new FirViewHolder(view);
         }
 

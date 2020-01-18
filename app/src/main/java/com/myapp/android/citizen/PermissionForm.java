@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
@@ -146,8 +147,9 @@ public class PermissionForm extends AppCompatActivity implements SelectPoliceSta
                 String permissionId=reference.push().getKey();
                 reference.child(permissionId).setValue(currentPermission);
                 ShowId(permissionId);
-                DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Citizen");
-                databaseReference.child("PERMISSION").child(permissionId).setValue(currentPermission);
+                DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Citizen")
+                        .child(FirebaseAuth.getInstance().getUid());
+                databaseReference.child("PERMISSION").child(permissionId).setValue(new UserPermission(pid,permissionId));
 
             }
         });
